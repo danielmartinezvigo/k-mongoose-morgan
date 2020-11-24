@@ -1,7 +1,7 @@
 {
   "name": "k-mongoose-morgan",
   "description": "A fork of mongoose-morgan",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "keywords": [],
   "license": "MIT",
   "dependencies": {

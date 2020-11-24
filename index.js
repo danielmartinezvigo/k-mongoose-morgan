@@ -62,6 +62,10 @@ function MongooseMorgan(mongoData, options) {
     // Morgan options stream
     options.stream = passStream;
 
+    // Para saber cuando guardar.
+    const save = options.save;
+    delete options.save;
+
     // Schema - only once created.
     if (!logSchema) {
         logSchema = mongoose.Schema({
@@ -88,6 +92,15 @@ function MongooseMorgan(mongoData, options) {
 
     function onLine(line) {
         console.log(line);
+
+        if (
+          save
+          && typeof save === 'function'
+          && !save(line)
+        ) {
+          return;
+        }
+
         var logModel = new Log();
   
         const parts = line.split(' ');
